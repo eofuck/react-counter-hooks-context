@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ThemeContext } from './App';
 
 //Hooks need to be called in the exact same order every single time
 //and also they need to be at the top level of your functiom
@@ -7,11 +8,23 @@ import React, { useState } from 'react';
 export default function CounterHooks({ initialCount }) {
   console.log('Render Counter');
   const [count, setCount] = useState(initialCount);
+  const style = useContext(ThemeContext);
+
   return (
     <div>
-      <button onClick={() => setCount((prevCount) => prevCount - 1)}>-</button>
+      <button
+        style={style}
+        onClick={() => setCount((prevCount) => prevCount - 1)}
+      >
+        -
+      </button>
       <span>{count}</span>
-      <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
+      <button
+        style={style}
+        onClick={() => setCount((prevCount) => prevCount + 1)}
+      >
+        +
+      </button>
     </div>
   );
 }
